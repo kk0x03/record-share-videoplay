@@ -1,0 +1,12 @@
+<video>
+    <script>
+        const socket = new WebSocket('ws://localhost:8080');
+        socket.onmessage = (message) => {
+            let track = message.data; // get the track information
+            const video = document.querySelector('video');
+            let stream = new MediaStream(JSON.parse(track));
+            video.src = stream
+            video.play();
+        }
+    </script>
+</video>
